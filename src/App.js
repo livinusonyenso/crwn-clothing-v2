@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Navigation from "./routes/Navigation/navigation.component";
 import Home from "./routes/home/home.component";
-import SignIn from "./routes/sign-in/sign-in.component";
+import Authentication from "./routes/authentication/authentication.component";
 import Contact from "./routes/contact/contact.compoent";
 import { Routes, Route } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop  />} />
         <Route path="Contact" element={<Contact  />} />
-        <Route path="SignIn" element={<SignIn  />} />
+        <Route path="auth" element={<Authentication  />} />
       </Route>
     </Routes>
   ); 
