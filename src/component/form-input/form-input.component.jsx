@@ -1,11 +1,12 @@
-import './form-input.syle.scss';
-const FormInput = ({ label, ...otherProps}) => {
+import "./form-input.syle.scss";
+const FormInput = ({ label, ...otherProps }) => {
   return (
     <div className="group">
-        <input className="form-input" {...otherProps} />
+      <input className="form-input" {...otherProps} />
       {label && (
         <label
-          className={`${otherProps.value.length  ? "shrink" : " "
+          className={`${
+            otherProps.value.length ? "shrink" : " "
           } form-input-label`}
         >
           {label}
