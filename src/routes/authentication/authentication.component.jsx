@@ -17,9 +17,9 @@ const Authentication = () => {
 
   return (
     <div className="authentication-container">
-      <SignInForm />
+      <SignInForm onClick={LogGoogleUser} />
       <SignUpForm />
-      <button onClick={LogGoogleUser}>Sign in with Google</button>
+     {/* <button  onClick={LogGoogleUser}>Sign in with Google</button> */}
     </div>
   );
 };
