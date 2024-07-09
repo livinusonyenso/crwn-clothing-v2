@@ -18,40 +18,38 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-
 const removeCartItem = (cartItems, cartItemToReomve) => {
-    //find cartItem to remove
-    const existingCartItem = cartItems.find(
-        (cartItem) => cartItem.id === cartItemToReomve.id
-      );
+  //find cartItem to remove
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === cartItemToReomve.id
+  );
 
-    //check if quantity ia equal to 1,if it is,reomve cartItem from the cart
-    if(existingCartItem.quantity === 1){
-        return cartItems.filter( cartItem => cartItem.id !== cartItemToReomve.id);
-    }
+  //check if quantity ia equal to 1,if it is,reomve cartItem from the cart
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== cartItemToReomve.id);
+  }
 
-    //return cartItem with a matching cartitem with reduced quantity
+  //return cartItem with a matching cartitem with reduced quantity
 
-    return cartItems.map((cartItem) =>
+  return cartItems.map((cartItem) =>
     cartItem.id === cartItemToReomve.id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
       : cartItem
   );
+};
 
-}
-
-const clearCartItem = (cartItems,cartItemToClear ) => cartItems.filter( cartItem => cartItem.id !== cartItemToClear .id);
-
+const clearCartItem = (cartItems, cartItemToClear) =>
+  cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
 export const CartContext = createContext({
   isCartOpen: false,
-  setIsCartOpen: () => {},
+  setIsCartOpen: () => { },
   cartItems: [],
-  addItemToCart: () => {},
-  removeItemFromCart: () => {},
-  clearItemFromCart: () => {},
+  addItemToCart: () => { },
+  removeItemFromCart: () => { },
+  clearItemFromCart: () => { },
   cartCount: 0,
-  CartTotal:0
+  CartTotal: 0,
 });
 
 export const CartProvider = ({ children }) => {
@@ -67,9 +65,9 @@ export const CartProvider = ({ children }) => {
     );
     setCartCount(newCount);
   }, [cartItems]);
-   
+
   useEffect(() => {
-    const newCartTotal  = cartItems.reduce(
+    const newCartTotal = cartItems.reduce(
       (total, cartItem) => total + cartItem.quantity * cartItem.price,
       0
     );
@@ -83,11 +81,10 @@ export const CartProvider = ({ children }) => {
   const removeItemToCart = (cartItemToReomve) => {
     setCartItems(removeCartItem(cartItems, cartItemToReomve));
   };
-  
+
   const clearItemFromCart = (cartItemToClear) => {
     setCartItems(clearCartItem(cartItems, cartItemToClear));
   };
-
 
   const value = {
     isCartOpen,
